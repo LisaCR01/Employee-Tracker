@@ -8,6 +8,8 @@ const mysql = require('mysql2');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+let deptCurrent = [];
+let keysDept = [];
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
@@ -49,7 +51,9 @@ function initialQuestions() {
     .then(res => {
         let choice = res.seeWho;
         switch (choice) {
-        case "Everyone": console.log("that's everyone"); 
+        case "Everyone": db.query('SELECT * FROM employee_all', function (err, results) {
+            console.log(" ");
+            printTable(results);});; 
         return initialQuestions();
         case "All departments": db.query('SELECT * FROM department', function (err, results) {
             console.log(" ");
@@ -64,14 +68,74 @@ function initialQuestions() {
             console.log(" ");
             printTable(results);});
         return initialQuestions();
-        case "Add a department": console.log("add a department")
-        return initialQuestions();
-        case "Add a role": console.log("add a role")
-        return initialQuestions();
-        case "Add an employee": console.log("add an employee")
-        return initialQuestions();
+        case "Add a department": addDept(); break;
+        case "Add a role": addRole(); break;
+        case "Add an employee": addEmployee(); break;
+        case "Update an Employee": updateEmployee(); break;
         default: allDone();
 }})};
+
+function addDept(){
+    prompt([{
+        type: "input",
+        name: "addD",
+        message: "What would you like to call the new department?"
+        }])
+        .then
+        (res => { console.log(res.addD);
+        let sql = `INSERT INTO department(dept)
+        VALUES('${res.addD}')`;
+        db.query(sql,
+        function (err, results) {
+        console.log(results);
+        initialQuestions();
+            })
+        })
+};
+function addRole(){
+    // Computer pulls from the database the possible departments.
+    db.query('SELECT * FROM department', function (err, results) {
+    for (let i = 0; i < results.length; i++) {
+        deptCurrent[i] = results[i].dept;
+        keysDept[i] = results[i].dept_id;
+        }});
+    prompt([
+        {
+        type: "input",
+        name: "addR",
+        message: "What would you like to call the new role?"
+        },
+        
+        {
+        type: "input",
+        name: "salary",
+        message: "What is the role's salary?"
+        },
+
+        {
+        type: "list",
+        name: "deptChoice",
+        message: "What is the role's department?", 
+        choices: deptCurrent
+        }])
+        .then (res => {
+            let num = keysDept[deptCurrent.indexOf(res.deptChoice)];
+            let sql = `INSERT INTO roles(job,salary, department)
+            VALUES('${res.addR}',${res.salary},${num})`;
+            console.log(sql);
+        db.query(sql,
+            function (err, results) {
+                  console.log(results);
+                  initialQuestions();
+                })
+            })
+        };
+function addEmployee(){
+    initialQuestions();
+};
+function updateEmployee(){
+    initialQuestions();
+};
 
 // When the user has finished selecting reviewing their company it will exit initialQuestions.
 function allDone() {
