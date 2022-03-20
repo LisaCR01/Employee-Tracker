@@ -119,17 +119,15 @@ function addRole(){
         choices: deptCurrent
         }])
         .then (res => {
-            let num = keysDept[deptCurrent.indexOf(res.deptChoice)];
-            let sql = `INSERT INTO roles(job,salary, department)
-            VALUES('${res.addR}',${res.salary},${num})`;
-            console.log(sql);
+        let num = keysDept[deptCurrent.indexOf(res.deptChoice)];
+        let sql = `INSERT INTO roles(job,salary, department)
+        VALUES('${res.addR}',${res.salary},${num})`;
+        console.log(sql);
         db.query(sql,
-            function (err, results) {
-                  console.log(results);
-                  initialQuestions();
-                })
-            })
-        };
+        function (err, results) {
+        console.log(results);
+        initialQuestions();})})};
+        
 function addEmployee(){
     initialQuestions();
 };
