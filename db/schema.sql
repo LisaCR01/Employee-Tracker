@@ -32,3 +32,18 @@ CREATE TABLE roles (
   REFERENCES department(dept_id)
   );
 
+-- computer creates table for employee's names
+CREATE TABLE employee_names (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+   -- computer links the manager's name to the manager's table through the foreign key.
+  manager INT,
+  FOREIGN KEY (manager)
+  REFERENCES manager(id),
+  -- computer links the role collumn value to the id of the role table.
+  roles INT,
+  FOREIGN KEY (roles)
+  REFERENCES roles(role_id)
+);
+
