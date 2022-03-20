@@ -1,7 +1,6 @@
 # Employee Tracker
 
-In this project I built a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL. My motivation for this project is to highlight the use of content management systems (CMS), as developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. The purpose of this project is to highlight the use of MySQL in creating tables of databases. Something I have learnt through creating this application is 
-
+In this project I built a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL. My motivation for this project is to highlight the use of content management systems (CMS), as developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. The purpose of this project is to highlight the use of MySQL in creating tables of databases. Something I have learnt through creating this application is working to maximise the manipulation of the data in the sql files, for instance creating additional tables as views to reduce the amount of JavaScript I had to write. 
 
 ## Technologies Used
 
