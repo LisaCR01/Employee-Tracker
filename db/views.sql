@@ -1,0 +1,17 @@
+-- Computer pulls together selected collumns from different tables using the foreign keys.
+CREATE VIEW roles_all AS
+SELECT department.dept_id, job, salary, department.dept
+FROM roles
+LEFT JOIN department ON roles.department = department.dept_id;
+
+CREATE VIEW employee_interim AS  
+SELECT first_name,last_name,manager.man_id;
+-- roles.first_name, roles.last_name, roles.job, roles.department,roles.salary
+FROM employee_names
+-- LEFT JOIN roles ON employee_names.roles = roles.role_id;
+LEFT JOIN manager ON employee_names.manager = manager.man_id;
+
+/* CREATE VIEW employee_all AS
+SELECT first_name,last_name,job,leader, department.dept,salary
+From employee_interim
+LEFT join department  on employee_interim.department=department.dept_id; */

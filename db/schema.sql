@@ -16,7 +16,7 @@ CREATE TABLE department (
 
 -- Computer creates the manager table.
 CREATE TABLE manager (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  man_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   leader VARCHAR(30) NOT NULL
 );
 
@@ -37,13 +37,12 @@ CREATE TABLE employee_names (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
-   -- computer links the manager's name to the manager's table through the foreign key.
-  manager INT,
+   manager INT,
   FOREIGN KEY (manager)
-  REFERENCES manager(id),
-  -- computer links the role collumn value to the id of the role table.
+  REFERENCES manager(man_id), 
   roles INT,
   FOREIGN KEY (roles)
   REFERENCES roles(role_id)
 );
+
 

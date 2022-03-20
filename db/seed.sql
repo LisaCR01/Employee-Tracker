@@ -4,6 +4,13 @@ VALUES ("Shoes"),
        ("Boots"),
        ("Slippers");
 
+
+INSERT INTO manager (leader)
+VALUES ("Tom"),
+       ("Alice"),
+       ("Matt"),
+       ("Sammy");
+
 INSERT INTO roles (job,salary, department)
 VALUES ("shoe fitter",300,1),
        ("slipper tester",250,4),

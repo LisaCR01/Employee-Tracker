@@ -1,0 +1,28 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "employee v1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon node server.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LisaCR01/Employee-Tracker.git"
+  },
+  "author": "LCR01",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LisaCR01/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/LisaCR01/Employee-Tracker#readme",
+  "dependencies": {
+    "console-table-printer": "^2.10.0",
+    "express": "^4.17.3",
+    "inquirer": "^8.2.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "print-message": "^3.0.1"
+  }
+}
