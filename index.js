@@ -14,6 +14,8 @@ let rolesCurrent = [];
 let keysRoles = [];
 let managerCurrent = [];
 let keysManager = [];
+let empCurrent=[];
+let keysEmployee=[];
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
@@ -188,9 +190,50 @@ function addEmployee(){
         console.log(results);
         initialQuestions()})})};
     
-function updateEmployee(){
-    initialQuestions();
-};
+function updateEmployee() {
+    // Computer presents user with a list of employees to possibly amend.
+    db.query('SELECT * FROM employee_names', function (err, results) {
+    for (let i = 0; i < results.length; i++) {
+        // The choices combine the first and last name field's incase there's a repeat of a first or last name.
+        empCurrent[i] = results[i].first_name.concat(" ",results[i].last_name);
+        keysEmployee[i] = results[i].id}});
+    db.query('SELECT * FROM manager', function (err, results) {
+    for (let i = 0; i < results.length; i++) {
+        managerCurrent[i] = results[i].leader;
+        keysManager[i] = results[i].man_id}});
+    // Computer asks needed questions to gather required information about the updated employee.
+    prompt([
+        {
+        type: "input",
+        name: "confirm",
+        message: "Are you sure you want to amend an employee?",
+        default:"yes, I understand the consequences."
+        }, 
+        {
+        type: "list",
+        name: "empChoice",
+        message: "Which Employee would you like to update?", choices: empCurrent
+        },
+        {
+        type: "list",
+        name: "managerChoice",
+        message: "Who is the employee's manager?", choices: managerCurrent
+        }])
+        .then(res => {
+        // the employee_names table needs the updated employee's information to be added. 
+        // Through the keys that correspond to the user selected choices. 
+        let num = keysEmployee[empCurrent.indexOf(res.empChoice)];
+        let num2 = keysManager[managerCurrent.indexOf(res.managerChoice)];
+        console.log("r"+managerCurrent);
+        // sql code for amending a line using the id.
+        console.log("val num "+num+" val num2 "+num2);
+        let sql = `UPDATE employee_names SET manager=${num2} where id=${num}`
+    
+        db.query(sql,
+        function (err, results) {
+        console.log(results);
+        initialQuestions()})})};
+          
 
 // When the user has finished selecting reviewing their company it will exit initialQuestions.
 function allDone() {

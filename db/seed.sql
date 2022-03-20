@@ -19,7 +19,7 @@ VALUES ("shoe fitter",300,1),
        ("sandal buckle fixer",220,2);
 
 INSERT INTO employee_names (first_name,last_name,roles,manager)
-VALUES ("Rafe","Mulekezi",1,4),
-       ("Will","Plant", 2,3),
-       ("Eva","Gunn",3,2),
-       ("Carola","Kirchoff", 2,1);
+VALUES ("Riley","Mathews",1,4),
+       ("Walter","Parmer", 2,3),
+       ("Ellie","Grant",3,2),
+       ("Cassie","Kennedy", 2,1);
