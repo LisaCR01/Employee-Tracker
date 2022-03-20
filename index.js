@@ -51,11 +51,18 @@ function initialQuestions() {
         switch (choice) {
         case "Everyone": console.log("that's everyone"); 
         return initialQuestions();
-        case "All departments": console.log("view all departments")
+        case "All departments": db.query('SELECT * FROM department', function (err, results) {
+            console.log(" ");
+            printTable(results);}); 
         return initialQuestions();
-        case "All managers": console.log("view all managers")
+        case "All managers": db.query('SELECT * FROM manager', function (err, results) {
+            console.log(" ");
+            printTable(results);});
         return initialQuestions();
-        case "All roles": console.log("view all roles")
+        // Used the view all role so that department name is populated.
+        case "All roles": db.query('SELECT * FROM roles_all', function (err, results) {
+            console.log(" ");
+            printTable(results);});
         return initialQuestions();
         case "Add a department": console.log("add a department")
         return initialQuestions();
@@ -77,3 +84,4 @@ function init() {
     printMessage(["Welcome!", "Let\'s organise the company."]);
     initialQuestions();
   };
+
