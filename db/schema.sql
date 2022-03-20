@@ -14,3 +14,21 @@ CREATE TABLE department (
   dept VARCHAR(30) NOT NULL
 );
 
+-- Computer creates the manager table.
+CREATE TABLE manager (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  leader VARCHAR(30) NOT NULL
+);
+
+-- computer creates table of roles.
+CREATE TABLE roles (
+  role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  job VARCHAR(30) NOT NULL,
+  -- salary can be upto 8 digits in total including the two digits after the decimal.
+  salary DECIMAL(8,2),
+  -- computer links the department collumn value to the id of the department table.
+  department INT,
+  FOREIGN KEY (department)
+  REFERENCES department(dept_id)
+  );
+
