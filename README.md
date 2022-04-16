@@ -30,6 +30,8 @@ In this project I built a command-line application from scratch to manage a comp
 ### Link to Walkthrough Video
 [Walkthrough Videos](https://drive.google.com/file/d/14OtyBqN__AYTHKlLahso-SlcV5Hg6Q3u/view)
 
+### Use of Inquirer
+### Table Formed
 
 ### Link to Github Repository
 [Github Repository](https://github.com/LisaCR01/Employee-Tracker.git)
