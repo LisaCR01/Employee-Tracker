@@ -40,8 +40,8 @@ In this project I built a command-line application from scratch to manage a comp
 [Github Repository](https://github.com/LisaCR01/Employee-Tracker.git)
 
 ## Contact Me
-[Email](mailto:lcrgunn@gmail.com)
-[Github](https://github.com/LisaCR01)
-[LinkedIn](https://www.linkedin.com/in/LisaCR01)
+* [Email](mailto:lcrgunn@gmail.com)
+* [Github](https://github.com/LisaCR01)
+* [LinkedIn](https://www.linkedin.com/in/LisaCR01)
 
 
