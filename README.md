@@ -38,3 +38,5 @@ In this project I built a command-line application from scratch to manage a comp
 
 ### Link to Github Repository
 [Github Repository](https://github.com/LisaCR01/Employee-Tracker.git)
+
+# Contact Me
